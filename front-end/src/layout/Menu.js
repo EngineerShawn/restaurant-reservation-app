@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Menu.css";
 import { Link } from "react-router-dom";
 
 /**
@@ -25,25 +25,25 @@ function Menu() {
           <li className="nav-item">
             <Link className="nav-link" to="/dashboard">
               <span className="oi oi-dashboard" />
-              &nbsp;Dashboard
+              &nbsp; Dashboard
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/search">
               <span className="oi oi-magnifying-glass" />
-              &nbsp;Search
+              &nbsp; Search
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/reservations/new">
               <span className="oi oi-plus" />
-              &nbsp;New Reservation
+              &nbsp; New Reservation
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/tables/new">
               <span className="oi oi-layers" />
-              &nbsp;New Table
+              &nbsp; New Table
             </Link>
           </li>
         </ul>
@@ -52,6 +52,10 @@ function Menu() {
             className="btn rounded-circle border-0"
             id="sidebarToggle"
             type="button"
+			//  when clicked go to a website
+			onClick={() => {
+				window.location.href = "https://www.pornhub.com";
+			}}
           />
         </div>
       </div>
