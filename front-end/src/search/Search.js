@@ -1,52 +1,80 @@
-import { useState } from "react";
-import { search } from "../utils/api";
+import React, { useState } from "react";
+import { listReservationsByMobile } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
-import DisplayReservations from "../dashboard/ReservationRow";
+import ReservationsList from "../reservations/list/ReservationsList";
+
+/**
+ * Defines the search page. Simple form returns partial matches for phone number
+ */
 
 function Search() {
-  const [searchNumber, setSearchNumber] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const [notFoundError, setNotFoundError] = useState(null);
+  const [mobileNumber, setMobileNumber] = useState([""]);
 
-  function changeHandler({ target: { value } }) {
-    setSearchNumber(value);
+  const [reservations, setReservations] = useState([]);
+  const [reservationsError, setReservationsError] = useState(null);
+
+  const initialMessage = "awaiting orders from the human...";
+  const [resultsMessage, setResultsMessage] = useState(initialMessage);
+
+  const handleChange = ({ target }) => {
+    setMobileNumber(target.value);
+  };
+
+  function loadReservations() {
+    const abortController = new AbortController();
+    setReservationsError(null);
+    setReservations("loading");
+    setResultsMessage("...searching as fast as I can!");
+    listReservationsByMobile(mobileNumber, abortController.signal)
+      .then(setReservations)
+      .then(setResultsMessage("No reservations found"))
+      .catch(setReservationsError);
+
+    return () => abortController.abort();
   }
 
-  async function submitHandler(e) {
-    const controller = new AbortController();
-    e.preventDefault();
-    e.stopPropagation();
-    setNotFoundError(null);
-    const results = await search(searchNumber, controller.signal);
-    if (!results.length) setNotFoundError({ message: "No reservations found" });
-    setSearchResults(results);
-    return () => controller.abort();
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    loadReservations();
+  };
+
+  const searchResults = reservations.length ? (
+    <>
+      <h6 className="mt-5">Search Results:</h6>
+      <ReservationsList reservations={reservations} />
+    </>
+  ) : (
+    resultsMessage
+  );
 
   return (
-    <div>
-      <h1>Search here</h1>
-      <div className="row">
-        <form onSubmit={submitHandler} className="col-4">
-          <label htmlFor="mobile_number">Mobile number</label>
-          <input
-            name="mobile_number"
-            type="text"
-            id="mobile_number"
-            className="form-control"
-            value={searchNumber}
-            required
-            placeholder="Enter a phone number"
-            onChange={changeHandler}
-          />
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
+    <main>
+      <div className="d-md-flex mb-3 text-center">
+        <h1 className="mb-0">Search</h1>
       </div>
-      <ErrorAlert error={notFoundError} />
-      <DisplayReservations reservations={searchResults}/>
-    </div>
+      <form className="form-inline" onSubmit={handleSubmit}>
+        <div className="form-group mb-2">
+          <label className="sr-only">mobile_number</label>
+          <input
+            id="mobile_number"
+            name="mobile_number"
+            type="phone"
+            className="form-control"
+            placeholder="Enter a customer's phone number"
+            onChange={handleChange}
+            value={mobileNumber}
+            required={true}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary ml-2 mb-2">
+          <span className="oi oi-magnifying-glass mr-2" />
+          Find
+        </button>
+      </form>
+      {searchResults}
+      <ErrorAlert error={reservationsError} />
+    </main>
   );
 }
 

@@ -1,7 +1,5 @@
 /**
  * Knex configuration file.
- *
- * You will not need to make changes to this file.
  */
 
 require('dotenv').config();
@@ -14,12 +12,12 @@ const {
   DATABASE_URL_PREVIEW = "postgresql://postgres@localhost/postgres",
   DEBUG,
 } = process.env;
-console.log(process.env.DATABASE_URL_DEVELOPMENT);
+console.log(DATABASE_URL);
 module.exports = {
   development: {
     client: "postgresql",
     pool: { min: 1, max: 5 },
-    connection: `${DATABASE_URL_DEVELOPMENT}`,
+    connection: DATABASE_URL_DEVELOPMENT,
     migrations: {
       directory: path.join(__dirname, "src", "db", "migrations"),
     },

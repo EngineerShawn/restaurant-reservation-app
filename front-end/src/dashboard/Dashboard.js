@@ -1,144 +1,89 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import { previous, next, today } from "../utils/date-time";
+import React, { useEffect, useState } from "react";
+import useQuery from "../utils/useQuery";
+import { listReservations, listTables } from "../utils/api";
+import formatDisplayDate from "../utils/format-display-date";
 import ErrorAlert from "../layout/ErrorAlert";
-import ReservationRow from "./ReservationRow";
-import TableRow from "./TableRow";
+import DateNavigation from "./DateNavigation";
+import ReservationsList from "../reservations/list/ReservationsList";
+import TablesList from "../tables/list/TablesList";
+import CurrentTime from "../widgets/CurrentTime";
 
-/**
- * Defines the dashboard page.
- * @param date
- *  the date for which the user wants to view reservations.
- * @returns {JSX.Element}
- */
-function Dashboard({
-  date,
-  reservations,
-  reservationsError,
-  tables,
-  tablesError,
-  loadDashboard,
-}) {
-  const history = useHistory();
-
-  const reservationsJSX = () => {
-    return reservations.map((reservation) => (
-      <ReservationRow
-        key={reservation.reservation_id}
-        reservation={reservation}
-        loadDashboard={loadDashboard}
-      />
-    ));
-  };
-
-  const tablesJSX = () => {
-    return tables.map((table) => (
-      <TableRow
-        key={table.table_id}
-        table={table}
-        loadDashboard={loadDashboard}
-      />
-    ));
-  };
-
-  /**
-   * Allows the user to navigate days on the calendar.
-   */
-  function handleClick({ target }) {
-    let newDate;
-    let useDate;
-
-    if (!date) {
-      useDate = today();
-    } else {
-      useDate = date;
-    }
-
-    if (target.name === "previous") {
-      newDate = previous(useDate);
-    } else if (target.name === "next") {
-      newDate = next(useDate);
-    } else {
-      newDate = today();
-    }
-
-    history.push(`/dashboard?date=${newDate}`);
+// date is passed from Routes.js as today()
+// IF there is a date provided in URL, then  = date
+function Dashboard({ date }) {
+  const dateInUrl = useQuery().get("date");
+  if (dateInUrl) {
+    date = dateInUrl;
   }
+
+  const [reservations, setReservations] = useState("loading");
+  const [reservationsError, setReservationsError] = useState(null);
+
+  const [tables, setTables] = useState("loading");
+  const [tablesError, setTablesError] = useState(null);
+
+  useEffect(loadReservations, [date]);
+  useEffect(loadTables, []);
+
+  function loadReservations() {
+    setReservations("loading");
+
+    const abortController = new AbortController();
+    setReservationsError(null);
+
+    // listReservations will run every time {date} changes
+    listReservations({ date }, abortController.signal)
+      .then(setReservations)
+      .catch(setReservationsError);
+
+    return () => abortController.abort();
+  }
+
+  function loadTables() {
+    setTables("loading");
+    const abortController = new AbortController();
+    setTablesError(null);
+
+    listTables(abortController.signal).then(setTables).catch(setTablesError);
+
+    return () => abortController.abort();
+  }
+
+  // convert YYYY-MM-DD to a more user-friendly format, examples:
+  // const displayDate = formatDisplayDate(date);
+  // const displayDateShort = formatDisplayDate(date, "short");
+  const displayDateLong = formatDisplayDate(date, "long");
 
   return (
     <main>
-      <h1>Dashboard</h1>
-
-      <h4 className="mb-0">Reservations for {date}</h4>
-
-      <button
-        className="btn btn-secondary m-1"
-        type="button"
-        name="previous"
-        onClick={handleClick}
-      >
-        Previous
-      </button>
-      <button
-        className="btn btn-primary m-1"
-        type="button"
-        name="today"
-        onClick={handleClick}
-      >
-        Today
-      </button>
-      <button
-        className="btn btn-secondary m-1"
-        type="button"
-        name="next"
-        onClick={handleClick}
-      >
-        Next
-      </button>
-
-      <ErrorAlert error={reservationsError} />
-
-      <table className="table table-hover m-1">
-        <thead className="thead-light">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Mobile Number</th>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
-            <th scope="col">People</th>
-            <th scope="col">Status</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Cancel</th>
-            <th scope="col">Seat</th>
-          </tr>
-        </thead>
-
-        <tbody>{reservationsJSX()}</tbody>
-      </table>
-
-      <br />
-      <br />
-
-      <h4 className="mb-0">Tables</h4>
-
-      <ErrorAlert error={tablesError} />
-
-      <table className="table table-hover m-1">
-        <thead className="thead-light">
-          <tr>
-            <th scope="col">Table ID</th>
-            <th scope="col">Table Name</th>
-            <th scope="col">Capacity</th>
-            <th scope="col">Status</th>
-            <th scope="col">Reservation ID</th>
-            <th scope="col">Finish</th>
-          </tr>
-        </thead>
-
-        <tbody>{tablesJSX()}</tbody>
-      </table>
+      <div className="row">
+        <div className="col-12 mx-auto my-3">
+          <h2 className="mb-0 text-center">{displayDateLong}</h2>
+          <DateNavigation date={date} />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-12 mx-auto">
+          <fieldset className="border border-bottom-0 border-dark p-3 m-0">
+            <legend className="pl-2 shadow bg-dark rounded sticky-top">
+              <CurrentTime sectionTitle={"Reservations"} />
+            </legend>
+            <ReservationsList reservations={reservations} />
+            <ErrorAlert error={reservationsError} />
+          </fieldset>
+        </div>
+      </div>
+      <div className="row mt-3">
+        <div className="col-md-12 mx-auto">
+          <fieldset className="border border-bottom-0 border-dark p-3 m-0">
+            <legend className="pl-2 text-white shadow bg-dark rounded sticky-top">
+              Tables
+            </legend>
+            <TablesList tables={tables} />
+            <ErrorAlert error={tablesError} />
+          </fieldset>
+        </div>
+      </div>
     </main>
   );
 }

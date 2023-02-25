@@ -1,50 +1,49 @@
 const knex = require("../db/connection");
 
-const tableName = "tables";
-
+// returns all tables
 function list() {
-  return knex(tableName).select("*");
+  return knex("tables").select("*").orderBy("table_name");
 }
 
+// posts new table
 function create(table) {
-  return knex(tableName).insert(table).returning("*");
+  return knex("tables")
+    .insert(table)
+    .returning("*")
+    .then((newTables) => newTables[0]);
 }
 
-function read(table_id) {
-  return knex(tableName).select("*").where({ table_id: table_id }).first();
-}
-
-function readReservation(reservation_id) {
-  return knex("reservations")
+// returns a reservation for the specified id
+function read(id) {
+  return knex("tables")
     .select("*")
-    .where({ reservation_id: reservation_id })
-    .first();
+    .where({ table_id: id })
+    .then((result) => result[0]);
 }
 
-function occupy(table_id, reservation_id) {
-  return knex(tableName)
-    .where({ table_id: table_id })
-    .update({ reservation_id: reservation_id, status: "occupied" });
-}
+// updates table after being assigned a reservation - also updates reservation status
+async function update(updatedTable, resId, updatedResStatus) {
+  try {
+    await knex.transaction(async (trx) => {
+      const returnedUpdatedTable = await trx("tables")
+        .where({ table_id: updatedTable.table_id })
+        .update(updatedTable, "*")
+        .then((updatedTables) => updatedTables[0]);
 
-function free(table_id) {
-  return knex(tableName)
-    .where({ table_id: table_id })
-    .update({ reservation_id: null, status: "free" });
-}
-
-function updateReservation(reservation_id, status) {
-  return knex("reservations")
-    .where({ reservation_id: reservation_id })
-    .update({ status: status });
+      const returnedUpdatedReservation = await trx("reservations")
+        .where({ reservation_id: resId })
+        .update({ status: updatedResStatus }, "*")
+        .then((updatedReservations) => updatedReservations[0]);
+    });
+  } catch (error) {
+    // If we get here, neither the reservation nor table updates have taken place.
+    console.error(error);
+  }
 }
 
 module.exports = {
-  list,
   create,
   read,
-  occupy,
-  free,
-  readReservation,
-  updateReservation,
+  update,
+  list,
 };
