@@ -1,3 +1,3 @@
-# Capstone: Restaurant Reservation System Backend
+# Capstone: Restaurant Reservation App Backend
 
 See [../README.md](../README.md)
