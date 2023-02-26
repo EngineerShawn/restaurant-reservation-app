@@ -2,6 +2,24 @@
   min-width: 200px;
 }
 
+.sidebar-brand-text, text-wrap mx-3 {
+  color: black;
+  text-decoration: underline;
+}
+
+#accordionSidebar .nav-link {
+  color: rgb(20, 20, 20);
+}
+
 .bg-menu {
-  background-color: #393a44;
+  background-color: #16cfa7;
+}
+
+
+input {
+  box-shadow:inset 0px 3px 2px 0px rgb(187, 187, 187);
+}
+
+.btn {
+  box-shadow:0px 2px 6px rgb(141, 141, 141);
 }

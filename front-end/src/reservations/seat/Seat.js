@@ -64,7 +64,7 @@ function Seat() {
 
   return (
     <section>
-      <h1>Assign Party of {reservationDetails.people} to a Table</h1>
+      <h1>Assign <span className="text-success">{reservationDetails.last_name}</span> a party of {reservationDetails.people} to table:</h1>
       <ErrorAlert error={allTablesError} />
       <ErrorAlert error={reservationError} />
       <form onSubmit={handleSubmit}>
