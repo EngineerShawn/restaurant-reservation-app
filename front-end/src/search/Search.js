@@ -64,6 +64,7 @@ function Search() {
             placeholder="Enter a customer's phone number"
             onChange={handleChange}
             value={mobileNumber}
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             required={true}
           />
         </div>

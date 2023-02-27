@@ -152,9 +152,9 @@ function Form({ method }) {
                   className="form-control"
                   onChange={handleChange}
                   value={formData.mobile_number}
-                  required={true}
-                />
-              </div>
+                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  />
+                  </div>
             </div>
             <div className="form-group form-row">
               <label
