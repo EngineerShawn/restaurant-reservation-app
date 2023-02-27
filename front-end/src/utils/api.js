@@ -6,7 +6,7 @@ import formatReservationDate from "./format-reservation-date";
 import formatReservationTime from "./format-reservation-time";
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL || "http://52.15.118.168";
+  process.env.REACT_APP_API_BASE_URL || "https://restaurant-reservation-app-backend-mtee.onrender.com";
 
 /**
  * Defines the default headers for these functions to work with `json-server`
