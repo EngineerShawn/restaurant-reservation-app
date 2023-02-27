@@ -375,7 +375,7 @@ describe("US-01 - Create and list reservations", () => {
     });
     test("returns reservations sorted by time (earliest time first)", async () => {
       const response = await request(app)
-        .get("/reservations?date=2020-12-30")
+        .get("/reservations?date=2023-02-26")
         .set("Accept", "application/json");
 
       expect(response.body.data).toHaveLength(2);
