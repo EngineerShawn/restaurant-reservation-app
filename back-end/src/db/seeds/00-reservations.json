@@ -58,5 +58,15 @@
     "people": 2,
     "created_at": "2023-02-26T20:30:24.326Z",
     "updated_at": "2023-02-26T20:30:24.326Z"
+  },
+  {
+    "first_name": "Engineer",
+    "last_name": "Immersion",
+    "mobile_number": "101-332-2023",
+    "reservation_date": "2023-03-02",
+    "reservation_time": "17:00",
+    "people": 23,
+    "created_at": "2023-02-26T20:30:24.326Z",
+    "updated_at": "2023-02-26T20:30:24.326Z"
   }
 ]
