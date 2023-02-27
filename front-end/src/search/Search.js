@@ -13,7 +13,7 @@ function Search() {
   const [reservations, setReservations] = useState([]);
   const [reservationsError, setReservationsError] = useState(null);
 
-  const initialMessage = "Enter Guest Phone Number or Name to Search";
+  const initialMessage = "Enter a customer's phone number to search";
   const [resultsMessage, setResultsMessage] = useState(initialMessage);
 
   const handleChange = ({ target }) => {
@@ -51,7 +51,7 @@ function Search() {
   return (
     <main>
       <div className="d-md-flex mb-3 text-center">
-        <h1 className="mb-0">Reservation Search</h1>
+        <h1 className="mb-0">Search</h1>
       </div>
       <form className="form-inline" onSubmit={handleSubmit}>
         <div className="form-group mb-2">
@@ -61,7 +61,7 @@ function Search() {
             name="mobile_number"
             type="phone"
             className="form-control"
-            placeholder="Provide Name or Number"
+            placeholder="Enter a customer's phone number"
             onChange={handleChange}
             value={mobileNumber}
             required={true}
