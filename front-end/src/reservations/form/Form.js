@@ -211,23 +211,25 @@ function Form({ method }) {
                 />
               </div>
             </div>
+
+            
             <div
               className="btn-toolbar mb-5"
               role="toolbar"
               aria-label="Toolbar with form actions buttons"
             >
+            <button type="submit" className="btn btn-primary ml-5">
+            Submit
+            <span className="oi oi-check ml-2" />
+          </button>
               <button
                 type="button"
                 value="Cancel"
-                className="btn btn-secondary mr-5"
+                className="btn btn-secondary ml-5"
                 onClick={handleCancel}
               >
                 <span className="oi oi-action-undo mr-2" />
                 Cancel
-              </button>
-              <button type="submit" className="btn btn-primary">
-                Submit
-                <span className="oi oi-check ml-2" />
               </button>
             </div>
             <ErrorAlert error={reservationsError} />

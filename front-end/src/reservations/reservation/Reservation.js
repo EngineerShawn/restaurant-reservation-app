@@ -20,14 +20,14 @@ function Reservation({ reservation }) {
   } = reservation;
 
   const borderColor = status === "booked" ? "primary" : "muted";
-  const bookedShadow = status === "booked" ? "shadow bg-white rounded" : null;
+  const bookedShadow = status === "booked" ? "shadow bg-light rounded" : null;
   const cancelledGray =
     status === "cancelled" ? "text-black-50 bg-light" : null;
   const timeStyles = {
     booked: "danger",
     seated: "success",
     finished: "muted",
-    cancelled: "white",
+    cancelled: "grey",
   };
   const statusStyle = timeStyles[status];
 
@@ -75,7 +75,11 @@ function Reservation({ reservation }) {
       </div>
 
       <div className={`card-body p-0 py-2`}>
-        <span className={`oi oi-people`} />
+        <span className={`p-0
+        ${
+          people === 1 ? "oi oi-person" : "oi oi-people"
+        }`
+        }/>
         <h3 className={"card-text font-weight-bold d-inline ml-2"}>{people}</h3>
         <p className="card-text mt-2 mb-1 ">
           {first_name} {last_name}

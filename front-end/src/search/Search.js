@@ -13,7 +13,7 @@ function Search() {
   const [reservations, setReservations] = useState([]);
   const [reservationsError, setReservationsError] = useState(null);
 
-  const initialMessage = "awaiting orders from the human...";
+  const initialMessage = "Enter a customer's phone number to search";
   const [resultsMessage, setResultsMessage] = useState(initialMessage);
 
   const handleChange = ({ target }) => {
@@ -24,7 +24,7 @@ function Search() {
     const abortController = new AbortController();
     setReservationsError(null);
     setReservations("loading");
-    setResultsMessage("...searching as fast as I can!");
+    setResultsMessage("...searching, Please wait!");
     listReservationsByMobile(mobileNumber, abortController.signal)
       .then(setReservations)
       .then(setResultsMessage("No reservations found"))
