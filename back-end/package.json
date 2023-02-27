@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Restaurant reservation system backend",
   "main": "src/server.js",
-  "homepage": "https://reservation.engineerpatterson.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/BountyFiveO/starter-restaurant-reservation",
