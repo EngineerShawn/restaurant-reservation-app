@@ -8,11 +8,10 @@ const path = require("path");
 const {
   DATABASE_URL = "postgres://mqaeqsxr:gbBvTTulTFnAdmeumQFkiWg7B_FSm-9h@raja.db.elephantsql.com/mqaeqsxr",
   DATABASE_URL_DEVELOPMENT = "postgres://mqaeqsxr:gbBvTTulTFnAdmeumQFkiWg7B_FSm-9h@raja.db.elephantsql.com/mqaeqsxr",
-  DATABASE_URL_TEST = "postgresql://postgres@localhost/postgres",
-  DATABASE_URL_PREVIEW = "postgresql://postgres@localhost/postgres",
+  DATABASE_URL_TEST = "postgres://mqaeqsxr:gbBvTTulTFnAdmeumQFkiWg7B_FSm-9h@raja.db.elephantsql.com/mqaeqsxr",
+  DATABASE_URL_PREVIEW = "postgres://mqaeqsxr:gbBvTTulTFnAdmeumQFkiWg7B_FSm-9h@raja.db.elephantsql.com/mqaeqsxr",
   DEBUG,
 } = process.env;
-console.log(DATABASE_URL);
 module.exports = {
   development: {
     client: "postgresql",
