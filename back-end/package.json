@@ -10,6 +10,7 @@
     "directory": "/tree/main/back-end"
   },
   "scripts": {
+    "install": "npm install",
     "start": "node src/server.js",
     "start:dev": "nodemon src/server.js",
     "test": "npx cross-env LOG_LEVEL=warn jest --runInBand --detectOpenHandles --forceExit",
