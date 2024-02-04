@@ -2,25 +2,42 @@
   min-width: 200px;
 }
 
-.sidebar-brand-text, text-wrap mx-3 {
-  color: rgb(255, 255, 255);
-  margin-top: 20px;
-}
-
-#accordionSidebar .nav-link {
-  color: rgba(255, 255, 255, 0.664);
-  margin-top: 20px;
-}
-
-.bg-menu {
-  background-color: #252525;
-}
-
-
-input {
-  box-shadow:inset 0px 3px 2px 0px rgb(187, 187, 187);
-}
-
 .btn {
   box-shadow:0px 2px 6px rgb(141, 141, 141);
 }
+
+/* Custom Style Updates */
+
+.side-bar {
+  background: linear-gradient(to right, #800080, #ffc0cb); /* Gradient from purple to pink */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Added shadow for depth */
+}
+
+.sidebar-brand-text, .text-wrap.mx-3 {
+  color: #ffffff; /* White text for better contrast */
+}
+
+#accordionSidebar .nav-link {
+  color: rgba(255, 255, 255, 0.85); /* Lighter white for links */
+}
+
+.bg-menu {
+  background-color: #252525; /* Keeping original dark background */
+}
+
+input, .btn {
+  border-radius: 8px; /* Rounded borders for inputs and buttons */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth */
+}
+
+.btn {
+  background-color: #800080; /* Purple background for buttons */
+  color: #ffffff; /* White text on buttons */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.btn:hover {
+  background-color: #4b0082; /* Slightly darker purple on hover */
+}
+
+/* Additional custom styles can be added below */
