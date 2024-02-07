@@ -7,6 +7,8 @@ import DateNavigation from "./DateNavigation";
 import ReservationsList from "../reservations/list/ReservationsList";
 import TablesList from "../tables/list/TablesList";
 import CurrentTime from "../widgets/CurrentTime";
+import AuthButtons from "./authButtons/AuthButtons";
+
 
 // date is passed from Routes.js as today()
 // IF there is a date provided in URL, then  = date
@@ -56,6 +58,9 @@ function Dashboard({ date }) {
 
   return (
     <main>
+       <div className="auth-buttons-container">
+        <AuthButtons />
+      </div>
       <div className="row">
         <div className="col-12 mx-auto my-3">
           <h2 className="mb-0 text-center">{displayDateLong}</h2>
