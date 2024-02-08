@@ -48,7 +48,7 @@ function Menu() {
           </li>
             <li className="nav-item">
             <Link className="nav-link" to="/login">
-              <span className="oi oi-person" />
+              <span className="oi oi-account-login" />
               &nbsp;Login
             </Link>
           </li>
