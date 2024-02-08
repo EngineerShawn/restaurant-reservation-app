@@ -26,7 +26,7 @@ const Login = ({ switchToRegister }) => {
                <span className="register-link" onClick={switchToRegister}> Register</span>
                 </p>
     );
-//};
+};
 
 export default Login;
 
