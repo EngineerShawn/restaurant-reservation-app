@@ -73,7 +73,8 @@ const Register = ({ switchToLogin }) => {
                     <button type="submit">Register</button>
                 </form>
              <p> Already have an account?
-                 <Link to = /Login 
+                 <span className="login-link" onClick={switchToLogin}> Logi</span>
+             </p>
             </div>
         </div>
     );
