@@ -33,13 +33,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import "./authStyle.css";
 
-const Register = ({ show, handleClose }) => {
+const Register = ({ switchToLogin }) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-
-    if (!show) return null;
+    const [confirmPassword, setConfirmPassword] = useState('')
 
     const validatePassword = (password) => {
         const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!-.])[A-Za-z\d!-.]{6,}$/;
@@ -67,7 +65,6 @@ const Register = ({ show, handleClose }) => {
     return (
         <div className="modal">
             <div className="modal-content">
-                <span className="close" onClick={handleClose}>&times;</span>
                 <form onSubmit={handleSubmit}>
                     <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
@@ -75,6 +72,8 @@ const Register = ({ show, handleClose }) => {
                     <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirm Password" />
                     <button type="submit">Register</button>
                 </form>
+             <p> Already have an account?
+                 <Link to = /Login 
             </div>
         </div>
     );
