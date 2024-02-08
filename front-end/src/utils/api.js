@@ -52,6 +52,37 @@ async function fetchJson(url, options, onCancel) {
   }
 }
 
+
+
+
+/**
+ * vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  User Login vvvvvvvvvvvvvvvvvvvvvvv
+ */
+export async function loginUser(credentials, signal) {
+  const url = new URL(`${API_BASE_URL}/login`);
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ data: credentials }),
+    signal,
+  };
+  return await fetchJson(url, options);
+}
+
+
+/**
+ * vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  User Register vvvvvvvvvvvvvvvvvvvvvvv
+ */
+export async function registerUser(newUser, signal) {
+  const url = new URL(`${API_BASE_URL}/register`);
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ data: newUser }),
+    signal,
+  };
+  return await fetchJson(url, options);
+}
 /*
  * vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv  Reservations  vvvvvvvvvvvvvvvvvvvvvvv
  */
