@@ -30,6 +30,7 @@ export default Register;
 */
 
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Register = ({ show, handleClose }) => {
     const [username, setUsername] = useState('');
@@ -44,17 +45,22 @@ const Register = ({ show, handleClose }) => {
         return regex.test(password);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if(password !== confirmPassword) {
             alert("Passwords do not match.");
             return;
         }
         if(!validatePassword(password)) {
-            alert("Password must be at least 6 characters and contain 1 uppercase, 1 lowercase, 1 number, and 1 special character");
+            alert("Password must be at least 6 characters and contain 1 uppercase, 1 lowercase, 1 number, and 1 special character (!, -, ., etc.)");
             return;
         }
-        // Proceed with registration process
+        try {
+            const response = await axios.post('https://reservationapi.engineerpatterson.com/register', { username, email, password });
+            console.log(response.data); // Handle the response accordingly
+        } catch (error) {
+            console.error(error); // Handle errors
+        }
     };
 
     return (
