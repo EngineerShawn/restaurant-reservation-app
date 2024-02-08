@@ -5,6 +5,8 @@ import Reservations from "../reservations/Reservations";
 import Tables from "../tables/Tables";
 import Search from "../search/Search";
 import { today } from "../utils/date-time";
+import Login from "../auth/login";
+import Register from "../auth/register";
 import NotFound from "./NotFound";
 
 /**
@@ -33,6 +35,12 @@ function Routes() {
       </Route>
       <Route path="/dashboard">
         <Dashboard date={today()} />
+      </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/register">
+        <Register />
       </Route>
       <Route>
         <NotFound />
