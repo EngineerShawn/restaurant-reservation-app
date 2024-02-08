@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import "./authStyle.css";
 
 const Login = ({ switchToRegister }) => {
     const [email, setEmail] = useState('');
