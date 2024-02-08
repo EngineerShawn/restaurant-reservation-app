@@ -5,8 +5,8 @@ import Reservations from "../reservations/Reservations";
 import Tables from "../tables/Tables";
 import Search from "../search/Search";
 import { today } from "../utils/date-time";
-import Login from "../auth/login";
-import Register from "../auth/register";
+import Login from "../auth/Login";
+import Register from "../auth/Register";
 import NotFound from "./NotFound";
 
 /**
