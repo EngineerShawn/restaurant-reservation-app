@@ -31,6 +31,7 @@ export default Register;
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import "./authStyle.css";
 
 const Register = ({ show, handleClose }) => {
     const [username, setUsername] = useState('');
