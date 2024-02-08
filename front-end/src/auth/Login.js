@@ -1,7 +1,7 @@
-/*import React, { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-const Login = () => {
+const Login = ({ switchToRegister }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -21,13 +21,17 @@ const Login = () => {
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
             <button type="submit">Login</button>
         </form>
+          <p>
+              Don't have an account? 
+               <span className="register-link" onClick={switchToRegister}> Register</span>
+                </p>
     );
 //};
 
-export default Login;*/
+export default Login;
 
 
-import React, { useState } from 'react';
+/* import React, { useState } from 'react';
 import axios from 'axios';
 
 const Login = ({ show, handleClose, switchToRegister }) => {
@@ -64,4 +68,4 @@ const Login = ({ show, handleClose, switchToRegister }) => {
     );
 };
 
-export default Login;
+export default Login; */
