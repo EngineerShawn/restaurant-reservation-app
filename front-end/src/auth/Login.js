@@ -16,15 +16,19 @@ const Login = ({ switchToRegister }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-            <button type="submit">Login</button>
-        </form>
+        <div className="modal">
+            <div className="modal-content">
+              <form onSubmit={handleSubmit}>
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                <button type="submit">Login</button>
+              </form>
           <p>
               Don't have an account? 
                <span className="register-link" onClick={switchToRegister}> Register</span>
                 </p>
+            </div>
+        </div>
     );
 };
 
