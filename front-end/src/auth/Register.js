@@ -26,4 +26,4 @@ const Register = () => {
     );
 };
 
-export default Register;￼Enter
+export default Register;
