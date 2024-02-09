@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/* import React, { useState } from 'react';
 import axios from 'axios';
 import "./authStyle.css";
 
@@ -33,11 +33,14 @@ const Login = ({ switchToRegister }) => {
     );
 };
 
-export default Login;
+export default Login; */
+ 
 
-
-/* import React, { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import "./authStyle.css";
+import "./authMiddleware";
+
 
 const Login = ({ show, handleClose, switchToRegister }) => {
     const [email, setEmail] = useState('');
@@ -45,8 +48,17 @@ const Login = ({ show, handleClose, switchToRegister }) => {
 
     if (!show) return null;
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!email || !password) {
+        alert("Both email and password are required.");
+        return;
+    }
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
         try {
             const response = await axios.post('https://reservationapi.engineerpatterson.com/login', { email, password });
             console.log(response.data); // Handle the response accordingly
@@ -73,4 +85,4 @@ const Login = ({ show, handleClose, switchToRegister }) => {
     );
 };
 
-export default Login; */
+export default Login;
