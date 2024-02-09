@@ -1,5 +1,5 @@
 /* Container for Form */
-.form-container {
+.login-container {
     max-width: 400px;
     margin: 20px auto;
     padding: 20px;
@@ -12,7 +12,18 @@
     overflow: hidden;
 }
 
-.form-container::before {
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px; bottom: -50px; left: -50px;
+    z-index: -1;
+    background: linear-gradient(135deg, #e91e63, #673ab7, #ffeb3b, #00bcd4);
+    background-size: 400%;
+    border-radius: 40px;
+    animation: animateGradient 4s linear infinite;
+}
+
+.register-container::before {
     content: '';
     position: absolute;
     top: -50px; right: -50px; bottom: -50px; left: -50px;
@@ -30,14 +41,14 @@
 }
 
 /* Form Styles */
-.form-container form {
+.login-container form {
     display: flex;
     flex-direction: column;
     align-items: stretch;
 }
 
-.form-container form input[type="email"],
-.form-container form input[type="password"] {
+.login-container form input[type="email"],
+.login-container form input[type="password"] {
     padding: 10px;
     margin-bottom: 10px;
     border: 2px solid transparent;
@@ -46,14 +57,14 @@
     color: #333;
 }
 
-.form-container form input[type="email"]:focus,
-.form-container form input[type="password"]:focus {
+.login-container form input[type="email"]:focus,
+.login-container form input[type="password"]:focus {
     outline: none;
     border-color: #673ab7;
     background-color: white;
 }
 
-.form-container form button {
+.login-container form button {
     padding: 10px;
     background-color: #673ab7;
     color: white;
@@ -63,7 +74,44 @@
     transition: background-color 0.3s;
 }
 
-.form-container form button:hover {
+.login-container form button:hover {
+    background-color: #9c27b0;
+}
+
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.register-container form input[type="email"],
+.register-container form input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+}
+
+.register-container form input[type="email"]:focus,
+.register-container form input[type="password"]:focus {
+    outline: none;
+    border-color: #673ab7;
+    background-color: white;
+}
+
+.register-container form button {
+    padding: 10px;
+    background-color: #673ab7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.register-container form button:hover {
     background-color: #9c27b0;
 }
 
