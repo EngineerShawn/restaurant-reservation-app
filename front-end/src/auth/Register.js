@@ -50,7 +50,7 @@ const Register = ({ show, handleClose, switchToLogin }) => {
     }
 
         try {
-            const response = await axios.post('https://reservationapi.engineerpatterson.com/register', { username, email, password });
+            const response = await axios.post('https://reservationapi.engineerpatterson.com/register', { employeeId, email, password });
             console.log(response.data);
         } catch (error) {
             console.error(error);
