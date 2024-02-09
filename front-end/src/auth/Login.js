@@ -10,7 +10,7 @@ const Login = ({ switchToRegister }) => {
         e.preventDefault();
         try {
             const response = await axios.post('https://reservationapi.engineerpatterson/login', { email, password });
-            console.log(response.data); // Handle the response accordingly
+             console.log(response.data); // Handle the response accordingly
         } catch (error) {
             console.error(error); // Handle errors
         }
@@ -41,7 +41,7 @@ import axios from 'axios';
 import "./authStyle.css";
 
 
-const Login = ({ handleClose, switchToRegister }) => {
+const Login = ({ show, handleClose, switchToRegister }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -52,6 +52,8 @@ const Login = ({ handleClose, switchToRegister }) => {
         alert("Both email and password are required.");
         return;
     }
+    if (!show) return null;
+        
     if (!/^\S+@\S+\.\S+$/.test(email)) {
         alert("Please enter a valid email address.");
         return;
