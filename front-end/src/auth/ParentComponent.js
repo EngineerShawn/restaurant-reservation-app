@@ -6,16 +6,16 @@ const ParentComponent = () => {
     const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
 
-    const switchToLogin = () => setShowComponent('login');
-    const switchToRegister = () => setShowComponent('register');
+    const switchToLogin = () => setShowLogin(true);
+    const switchToRegister = () => setShowRegister(true);
 
     const handleLoginClose = () => setShowLogin(false);
     const handleRegisterClose = () => setShowRegister(false);
 
     return (
         <div>
-            {showComponent === 'login' && <Login handleClose={handleClose} switchToRegister={switchToRegister} />}
-            {showComponent === 'register' && <Register handleClose={handleClose} switchToLogin={switchToLogin} />}
+            {showLogin && <Login handleClose={handleLoginClose} switchToRegister={switchToRegister} />}
+            {showRegister && <Register handleClose={handleRegisterClose} switchToLogin={switchToLogin} />}
         </div>
     );
 };
