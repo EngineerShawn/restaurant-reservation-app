@@ -12,7 +12,6 @@ import ParentComponent from '../auth/ParentComponent';
 function Menu() {
   const [showLogin, setShowLogin] = useState(false);
   return (
-    <>
     <nav className="navbar navbar-dark align-items-start p-0">
       <div className="container-fluid d-flex flex-column p-0">
         <Link
@@ -26,7 +25,7 @@ function Menu() {
         <hr className="sidebar-divider my-0" />
         <ul className="nav navbar-nav text-light" id="accordionSidebar">
          <li className="nav-item">
-           <Link className="nav-link" onClick={() => setShowLogin(true)}>
+           <Link className="nav-link" onClick={() => setShowLogin(true)} to="/login">
             <span className="oi oi-account-login" />
               &nbsp; Login
            </Link>
@@ -64,9 +63,7 @@ function Menu() {
           />
         </div>
       </div>
-    </nav>
-    {showLogin && <ParentComponent />}
-  </>
+    </nav>         
   );
 }
 
