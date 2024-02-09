@@ -1,8 +1,8 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-import "../auth/ParentComponent";
 import "../auth/Login";
+import ParentComponent from '../auth/ParentComponent';
 
 /**
  * Defines the menu for this application.
@@ -11,6 +11,7 @@ import "../auth/Login";
  */
 
 function Menu() {
+  const [showLogin, setShowLogin] = useState(false);
   return (
     <nav className="navbar navbar-dark align-items-start p-0">
       <div className="container-fluid d-flex flex-column p-0">
@@ -24,34 +25,33 @@ function Menu() {
         </Link>
         <hr className="sidebar-divider my-0" />
         <ul className="nav navbar-nav text-light" id="accordionSidebar">
-            <li className="nav-item">
-            <Link className="nav-link" to="/login">
-              <span className="oi oi-account-login" />
-              &nbsp;Login
-            </Link>
+            <li className="nav-link" onClick={() => setShowLogin(true)}>
+          <span className="oi oi-account-login" />
+              &nbsp; Login
+        </li>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/dashboard">
               <span className="oi oi-dashboard" />
-              &nbsp;Dashboard
+              &nbsp; Dashboard
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/search">
               <span className="oi oi-magnifying-glass" />
-              &nbsp;Search
+              &nbsp; Search
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/reservations/new">
               <span className="oi oi-plus" />
-              &nbsp;New Reservation
+              &nbsp; New Reservation
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/tables/new">
               <span className="oi oi-layers" />
-              &nbsp;New Table
+              &nbsp; New Table
             </Link>
           </li>
         </ul>
