@@ -59,7 +59,7 @@ const Register = ({ show, handleClose, switchToLogin }) => {
 
     return (
         <div className="modal">
-            <div className="modal-content">
+            <div className="modal-content register-container">
                 <span className="close" onClick={handleClose}>&times;</span>
                 <form onSubmit={handleSubmit}>
                     <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
