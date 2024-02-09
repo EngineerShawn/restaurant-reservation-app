@@ -10,7 +10,6 @@ import ParentComponent from '../auth/ParentComponent';
  */
 
 function Menu({ showLogin }) {
-  const [showLogin, setShowLogin] = useState(false);
 
   // State to track if the user is logged in
   const [isLoggedIn, setIsLoggedIn] = useState(false);
