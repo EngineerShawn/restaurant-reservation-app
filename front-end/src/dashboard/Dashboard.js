@@ -7,7 +7,6 @@ import DateNavigation from "./DateNavigation";
 import ReservationsList from "../reservations/list/ReservationsList";
 import TablesList from "../tables/list/TablesList";
 import CurrentTime from "../widgets/CurrentTime";
-import AuthButtons from "./authButtons";
 
 
 // date is passed from Routes.js as today()
