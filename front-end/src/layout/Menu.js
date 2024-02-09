@@ -9,7 +9,7 @@ import ParentComponent from '../auth/ParentComponent';
  * @returns {JSX.Element}
  */
 
-function Menu() {
+function Menu({ showLogin }) {
   const [showLogin, setShowLogin] = useState(false);
   return (
     <nav className="navbar navbar-dark align-items-start p-0">
