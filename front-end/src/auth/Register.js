@@ -98,7 +98,7 @@ export default Register;
 
 /*.  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^. */
 
-import React, { useState } from 'react';
+/* import React, { useState } from 'react';
 import axios from 'axios';
 import "./authStyle.css";
 
@@ -150,3 +150,6 @@ const Register = ({ switchToLogin }) => {
 };
 
 export default Register;
+*/
+
+
