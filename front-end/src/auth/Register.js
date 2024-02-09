@@ -4,7 +4,7 @@ import "./authStyle.css";
 
 
 const Register = ({ show, handleClose, switchToLogin }) => {
-    const [username, setUsername] = useState('');
+    const [employeeId, setEmployeeId] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -36,7 +36,7 @@ const Register = ({ show, handleClose, switchToLogin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!username || !email || !password) {
+        if (!employeeId || !email || !password) {
         alert("All fields are required.");
         return;
     }
@@ -62,7 +62,7 @@ const Register = ({ show, handleClose, switchToLogin }) => {
             <div className="modal-content register-container">
                 <span className="close" onClick={handleClose}>&times;</span>
                 <form onSubmit={handleSubmit}>
-                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
+                    <input type="text" value={employeeId} onChange={(e) => setEmployeeId(e.target.value)} placeholder="Employee ID" />
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
                     <input type="password" value={password} onChange={(e) => updatePassword(e.target.value)} placeholder="Password" />
                     <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirm Password" />
