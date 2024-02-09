@@ -1,6 +1,8 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+import "../auth/ParentComponent";
+import "../auth/Login";
 
 /**
  * Defines the menu for this application.
