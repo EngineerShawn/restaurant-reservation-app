@@ -42,11 +42,9 @@ import "./authStyle.css";
 import "./authMiddleware";
 
 
-const Login = ({ show, handleClose, switchToRegister }) => {
+const Login = ({ handleClose, switchToRegister }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    if (!show) return null;
 
 
     const handleSubmit = async (e) => {
