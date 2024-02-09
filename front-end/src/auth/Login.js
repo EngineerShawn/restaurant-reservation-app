@@ -67,7 +67,7 @@ const Login = ({ handleClose, switchToRegister }) => {
 
     return (
         <div className="modal">
-            <div className="modal-content">
+            <div className="modal-content login-container">
                 <span className="close" onClick={handleClose}>&times;</span>
                 <form onSubmit={handleSubmit}>
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
