@@ -39,7 +39,7 @@ export default Login; */
 import React, { useState } from 'react';
 import axios from 'axios';
 import "./authStyle.css";
-import "./authMiddleware";
+import "./ParentComponent";
 
 
 const Login = ({ handleClose, switchToRegister }) => {
