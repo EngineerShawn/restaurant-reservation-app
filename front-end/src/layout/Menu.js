@@ -11,6 +11,18 @@ import ParentComponent from '../auth/ParentComponent';
 
 function Menu({ showLogin }) {
   const [showLogin, setShowLogin] = useState(false);
+
+  // State to track if the user is logged in
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // State to store user's employee ID
+  const [employeeId, setEmployeeId] = useState('');
+
+  // Function to handle successful login
+  const handleLogin = (id) => {
+    setIsLoggedIn(true);
+    setEmployeeId(id);
+  };
+
   return (
     <nav className="navbar navbar-dark align-items-start p-0">
       <div className="container-fluid d-flex flex-column p-0">
@@ -24,12 +36,25 @@ function Menu({ showLogin }) {
         </Link>
         <hr className="sidebar-divider my-0" />
         <ul className="nav navbar-nav text-light" id="accordionSidebar">
-         <li className="nav-item">
-           <Link className="nav-link" onClick={() => setShowLogin(true)} to="/login">
-            <span className="oi oi-account-login" />
-              &nbsp; Login
-           </Link>
-          </li>
+          {/* If user is not logged in, show Login/Register link */}
+          {!isLoggedIn && (
+            <li className="nav-item">
+              <Link className="nav-link" onClick={() => setShowLogin(true)}>
+                <span className="oi oi-account-login" />
+                &nbsp; Login/Register
+              </Link>
+            </li>
+          )}
+          {/* If user is logged in, show user's employee ID */}
+          {isLoggedIn && (
+            <li className="nav-item">
+              <span className="nav-link text-success">
+                Employee ID: {employeeId}
+              </span>
+            </li>
+          )}
+          {/* Render the Login/Register component if showLogin state is true */}
+          {showLogin && <ParentComponent handleLogin={handleLogin} />}
           <li className="nav-item">
             <Link className="nav-link" to="/dashboard">
               <span className="oi oi-dashboard" />
