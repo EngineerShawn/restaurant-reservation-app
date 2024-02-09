@@ -41,10 +41,11 @@ import axios from 'axios';
 import "./authStyle.css";
 
 
-const Login = ({ handleClose, switchToRegister }) => {
+const Login = ({ show, handleClose, switchToRegister }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    if (!show) return null;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
