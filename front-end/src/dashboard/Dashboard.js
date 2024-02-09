@@ -57,9 +57,6 @@ function Dashboard({ date }) {
 
   return (
     <main>
-       <div className="auth-buttons-container">
-        <AuthButtons />
-      </div>
       <div className="row">
         <div className="col-12 mx-auto my-3">
           <h2 className="mb-0 text-center">{displayDateLong}</h2>
