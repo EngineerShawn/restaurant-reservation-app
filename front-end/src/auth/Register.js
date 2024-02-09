@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "./authStyle.css";
-import "./authMiddleware";
+import ParentComponent from './ParentComponent';
 
 
 const Register = ({ show, handleClose, switchToLogin }) => {
