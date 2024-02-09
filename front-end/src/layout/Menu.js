@@ -12,6 +12,7 @@ import ParentComponent from '../auth/ParentComponent';
 function Menu() {
   const [showLogin, setShowLogin] = useState(false);
   return (
+    <>
     <nav className="navbar navbar-dark align-items-start p-0">
       <div className="container-fluid d-flex flex-column p-0">
         <Link
@@ -62,6 +63,8 @@ function Menu() {
         </div>
       </div>
     </nav>
+    {showLogin && <ParentComponent />}
+  </>
   );
 }
 
