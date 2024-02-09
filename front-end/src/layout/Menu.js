@@ -9,7 +9,7 @@ import ParentComponent from '../auth/ParentComponent';
  * @returns {JSX.Element}
  */
 
-function Menu({ showLogin }) {
+function Menu() {
 
   // State to track if the user is logged in
   const [isLoggedIn, setIsLoggedIn] = useState(false);
