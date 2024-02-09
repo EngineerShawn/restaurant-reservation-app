@@ -45,6 +45,7 @@ const Login = ({ show, handleClose, switchToRegister }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    if (!show) return null;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -52,7 +53,6 @@ const Login = ({ show, handleClose, switchToRegister }) => {
         alert("Both email and password are required.");
         return;
     }
-    if (!show) return null;
         
     if (!/^\S+@\S+\.\S+$/.test(email)) {
         alert("Please enter a valid email address.");
