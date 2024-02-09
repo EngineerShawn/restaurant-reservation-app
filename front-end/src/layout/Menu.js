@@ -20,15 +20,14 @@ function Menu() {
           to="/"
         >
           <div className="sidebar-brand-text text-wrap mx-3">
-            <span>Restaurant Reservation System v1.8</span>
+            <span>EngineerPattersons Reservation App</span>
           </div>
         </Link>
         <hr className="sidebar-divider my-0" />
         <ul className="nav navbar-nav text-light" id="accordionSidebar">
-            <li className="nav-link" onClick={() => setShowLogin(true)}>
-          <span className="oi oi-account-login" />
+          <li className="nav-item" onClick={() => setShowLogin(true)}>
+            <span className="nav-link oi oi-account-login" />
               &nbsp; Login
-        </li>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/dashboard">
