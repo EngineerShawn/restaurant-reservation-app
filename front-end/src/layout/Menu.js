@@ -31,9 +31,9 @@ function Menu() {
         <ul className="nav navbar-nav">
           {!isLoggedIn && (
             <li className="nav-item">
-              <Link className="nav-link" onClick={() => setShowLogin(true)}>
+              <Link className="nav-link" to="/login" onClick={() => setShowLogin(true)}>
                 <span className="oi oi-account-login" />
-                &nbsp; Login/Register
+                &nbsp; Login
               </Link>
             </li>
           )}
